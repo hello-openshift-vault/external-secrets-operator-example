@@ -1,22 +1,11 @@
-FROM argoproj/argocd:latest
-# Switch to root for the ability to perform install
-USER root
+FROM registry.redhat.io/openshift-gitops-1/argocd-rhel8:v1.5.0
 
-# Install tools needed for your repo-server to retrieve & decrypt secrets, render manifests
-# (e.g. curl, awscli, gpg, sops)
-RUN apt-get update && \
-    apt-get install -y \
-        curl \
-        awscli \
-        gpg && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Switch to root for the ability to perform install
+USER 0
 
 # Install the AVP plugin (as root so we can copy to /usr/local/bin)
-RUN curl -L -o https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v1.11.0/argocd-vault-plugin_1.11.0_linux_amd64 argocd-vault-plugin https://github.com/IBM/argocd-vault-plugin/releases/download/v0.7.0/argocd-v
-ault-plugin_0.7.0_linux_amd64
-RUN chmod +x argocd-vault-plugin
-RUN mv argocd-vault-plugin /usr/local/bin
+RUN curl -L -o /usr/local/bin/argocd-vault-plugin https://github.com/argoproj-labs/argocd-vault-plugin/releases/download/v1.11.0/argocd-vault-plugin_1.11.0_linux_amd64
+RUN chmod +x /usr/local/bin/argocd-vault-plugin
 
 # Switch back to non-root user
-USER argocd
+USER 999
