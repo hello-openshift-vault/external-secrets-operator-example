@@ -56,7 +56,7 @@ spec:
       requests:
         cpu: 250m
         memory: 128Mi
-  image: '<IMAGE>'
+  image: 'registry.taco.moe/argo:latest'
   prometheus:
     enabled: false
     ingress:
