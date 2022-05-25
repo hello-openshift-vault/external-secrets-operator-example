@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: gitops
+  namespace: my-app
+spec:
+  configManagementPlugins: |-
+    - name: argocd-vault-plugin
+      generate:
+        command: ["argocd-vault-plugin"]
+        args: ["generate", "./"]
+  image: 'registry.taco.moe/argo'
+  server:
+    route:
+      enabled: true
+  version: latest
