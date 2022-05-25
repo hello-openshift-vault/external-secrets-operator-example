@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-app-project
+  namespace: my-app
+spec:
+  destinations:
+    - name: in-cluster
+      namespace: my-app
+  sourceRepos:
+    - 'https://git.taco.moe/prototype/argo-vault-plugin.git'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: my-app
+spec:
+  project: my-app-project
+  destination:
+    name: in-cluster
+    namespace: my-app
+  source:
+    repoURL: 'https://git.taco.moe/prototype/argo-vault-plugin.git'
+    path: 'test'
+    directory:
+      recurse: false
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
