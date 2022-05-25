@@ -9,7 +9,12 @@ spec:
       generate:
         command: ["argocd-vault-plugin"]
         args: ["generate", "./"]
+  dex:
+    openShiftOAuth: true
   image: 'registry.taco.moe/argo'
+  rbac:
+    policy: g, system:cluster-admins, role:admin
+    scopes: '[groups]'
   server:
     route:
       enabled: true
