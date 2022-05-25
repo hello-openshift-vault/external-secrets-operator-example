@@ -15,6 +15,9 @@ spec:
   rbac:
     policy: g, system:cluster-admins, role:admin
     scopes: '[groups]'
+  repo:
+    mountsatoken: true
+    serviceaccount: gitops-argocd-server
   server:
     route:
       enabled: true
