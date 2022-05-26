@@ -16,8 +16,12 @@ spec:
     policy: g, system:cluster-admins, role:admin
     scopes: '[groups]'
   repo:
+    # NOTE: Even though it uses the same image, you must specify the image and
+    # version for the repo server
+    image: 'registry.taco.moe/argo'
     mountsatoken: true
     serviceaccount: gitops-argocd-server
+    version: latest
   server:
     route:
       enabled: true
