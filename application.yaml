@@ -38,7 +38,7 @@ spec:
           value: auth/hub
         - name: AVP_TYPE
           value: vault
-        - name: AVP_VAULT_ADDR
+        - name: VAULT_ADDR
           value: 'https://vault.apps.hub.taco.moe'
   syncPolicy:
     automated:
