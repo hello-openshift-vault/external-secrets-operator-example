@@ -20,22 +20,22 @@ spec:
   destination:
     name: in-cluster
     namespace: my-app
-  plugin:
-    name: argocd-vault-plugin
-    env:
-      - name: AVP_K8S_ROLE
-        value: gitops-argocd-server
-      - name: AVP_TYPE
-        value: vault
-      - name: AVP_VAULT_ADDR
-        value: 'https://vault.apps.hub.taco.moe'
-      - name: AVP_AUTH_TYPE
-        value: k8s
   source:
     repoURL: 'https://git.taco.moe/prototype/argo-vault-plugin.git'
     path: 'test'
     directory:
       recurse: false
+    plugin:
+      name: argocd-vault-plugin
+      env:
+        - name: AVP_K8S_ROLE
+          value: gitops-argocd-server
+        - name: AVP_TYPE
+          value: vault
+        - name: AVP_VAULT_ADDR
+          value: 'https://vault.apps.hub.taco.moe'
+        - name: AVP_AUTH_TYPE
+          value: k8s
   syncPolicy:
     automated:
       prune: true
