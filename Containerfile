@@ -1,4 +1,4 @@
-FROM registry.redhat.io/openshift-gitops-1/argocd-rhel8:v1.5.0
+FROM registry.redhat.io/openshift-gitops-1/argocd-rhel8:v1.5.1
 
 USER 0
 
