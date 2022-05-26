@@ -36,6 +36,8 @@ spec:
           value: 'https://vault.apps.hub.taco.moe'
         - name: AVP_AUTH_TYPE
           value: k8s
+        - name: AVP_KV_VERSION
+          value: '2'
   syncPolicy:
     automated:
       prune: true
