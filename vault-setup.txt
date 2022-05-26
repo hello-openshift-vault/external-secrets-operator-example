@@ -1,0 +1,22 @@
+1  vault write auth/kubernetes/config     token_reviewer_jwt="$(cat/var/run/secrets/kubernetes.io/serviceaccount/token)"     kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"     kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+2  vault write auth/kubernetes/config     token_reviewer_jwt="$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)"     kubernetes_host="https://$KUBERNETES_PORT_443_TCP_ADDR:443"     kubernetes_ca_cert=@/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+3  vault kv put secret/my-app/message message="hello world!"
+4  vault kv put secret/my-app/message message="hello world!"
+5  policy write my-app - << EOF
+path "secret/data/my-app/*" {
+capabilities = ["read"]
+}
+EOF
+
+6  vault policy write my-app - << EOF
+path "secret/data/my-app/*" {
+capabilities = ["read"]
+}
+EOF
+
+7  vault write auth/kubernetes/role/my-app bound_service_account_names=gitops-server
+8  vault write auth/kubernetes/role/my-app bound_service_account_names=gitops-server bound_service_account_namespaces=my-app policies=my-app ttl=24h
+9  vault write auth/kubernetes/role/my-app bound_service_account_names=gitops-argocd-server bound_service_account_namespaces=my-app policies=my-app ttl=24h
+10  clear
+11  clear
+12  history
