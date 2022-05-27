@@ -22,7 +22,13 @@ spec:
     role: admin
     serviceAccount:
       name: vault-server
-  # NOTE: ISS is causing issues; need to look more into it
+  # NOTE: ISS validation isn't working; It must be disabled for
+  # argocd-vault-plugin to work. Validation isn't working even if the
+  # kubernetesHost value matches the "iis" value in the SA JWT.
+  #
+  # - Example -
+  # kubernetesHost: https://kubernetes.default.svc
+  # SA JWT has this: "iss":"https://kubernetes.default.svc"
   disableISSValidation: true
   tokenReviewerServiceAccount:
     name: vault-server
