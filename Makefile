@@ -18,7 +18,7 @@ install:
 	sleep 10
 	oc create -f ./manifests/03-namespace.yaml
 	oc create -f ./manifests/04-argocd.yaml
-	sleep 10
+	sleep 30
 	oc create -f ./manifests/05-application.yaml
 	echo 'Done!'
 
