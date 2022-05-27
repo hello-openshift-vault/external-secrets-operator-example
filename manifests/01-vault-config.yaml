@@ -1,4 +1,17 @@
 apiVersion: redhatcop.redhat.io/v1alpha1
+kind: AuthEngineMount
+metadata:
+  name: hub
+  namespace: vault-server
+spec:
+  authentication:
+    path: admin
+    role: admin
+    serviceAccount:
+      name: vault-server
+  type: kubernetes
+---
+apiVersion: redhatcop.redhat.io/v1alpha1
 kind: KubernetesAuthEngineConfig
 metadata:
   name: hub
@@ -12,20 +25,6 @@ spec:
   path: hub
   tokenReviewerServiceAccount:
     name: vault-server
----
-apiVersion: redhatcop.redhat.io/v1alpha1
-kind: AuthEngineMount
-metadata:
-  name: hub
-  namespace: vault-server
-spec:
-  authentication:
-    path: admin
-    role: admin
-    serviceAccount:
-      name: vault-server
-  path: hub
-  type: kubernetes
 ---
 apiVersion: redhatcop.redhat.io/v1alpha1
 kind: Policy
