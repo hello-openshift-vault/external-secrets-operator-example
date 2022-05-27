@@ -1,7 +1,17 @@
 # Argo Vault Plugin with OpenShift GitOps
 
-Attempting to get https://github.com/argoproj-labs/argocd-vault-plugin working
-with OpenShift GitOps following https://cloud.redhat.com/blog/how-to-use-hashicorp-vault-and-argo-cd-for-gitops-on-openshift.
+This repo contains example code that integrates [Hashicorp Vault] and [OpenShift
+GitOps] ([Argo CD]) to deploy secrets from Vault to an OpenShift cluster using
+the [argocd-vault-plugin].
+
+This code is based off the process outlined in this [Red Hat Blog]. Key
+differences between this implementation and the blog post:
+
+* Blog was written for v0.x of argocd-vault-plugin, this works with v1.x
+* Blog used the community Argo CD image from Docker.io, this uses the supported
+  OpenShift GitOps image from Red Hat
+* Blog configured Vault manually using CLI, this uses [Vault Config Operator]
+  to configure Vault
 
 ## Create OpenShift GitOps (Argo CD) image with argocd-vault-plugin embedded
 
@@ -41,3 +51,9 @@ To unisntall:
 ```bash
 $ make uninstall
 ```
+
+[Argo CD]:
+[argocd-vault-plugin]: https://github.com/argoproj-labs/argocd-vault-plugin
+[Hashicorp Vault]:
+[OpenShift GitOps]: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html
+[Red Hat Blog]: https://cloud.redhat.com/blog/how-to-use-hashicorp-vault-and-argo-cd-for-gitops-on-openshift
