@@ -13,6 +13,19 @@ differences between this implementation and the blog post:
 * Blog configured Vault manually using CLI, this uses [Vault Config Operator]
   to configure Vault
 
+## Overview
+
+* Install Vault
+* Configure Vault for Kubernetes authentication
+* Create custom Argo image with argocd-vault-plugin embedded
+* Push custom Argo image to registry
+* Install OpenShift GitOps Operator
+* Deploy Argo instance using custom image to my-app namespace
+* Deploy test application to Argo instance
+* During application deployment, Argo with call the argocd-vault-plugin to
+  replace the template value in secret with the actual secret vaule
+* 🍻
+
 ## Create OpenShift GitOps (Argo CD) image with argocd-vault-plugin embedded
 
 1. Build custom ArgoCD image with argo-vault-plugin installed:
