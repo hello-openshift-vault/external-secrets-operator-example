@@ -22,7 +22,8 @@ $ make push
 **First, [deploy vault](https://github.com/RyanMillerC/vault-init/)!** You will
 need a fresh vault to run this.
 
-Then, deploy manifests under *./manifests* with make:
+After validating that vault is up (pods should be *Ready*), deploy manifests
+under *./manifests* with make:
 
 ```bash
 $ make install
