@@ -22,7 +22,8 @@ spec:
     role: admin
     serviceAccount:
       name: vault-server
-  path: hub
+  # NOTE: ISS is causing issues; need to look more into it
+  disableISSValidation: true
   tokenReviewerServiceAccount:
     name: vault-server
 ---
