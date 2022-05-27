@@ -31,6 +31,13 @@ $ make install
 
 ## Uninstall
 
+**Run this uninstall before running the vault uninstall, otherwise the
+vault-config-operator CRs will hang on delete.** If you do accidentally
+uninstall this first, you can patch/edit the hanging CRs to remove their
+*finalizers*.
+
+To unisntall:
+
 ```bash
 $ make uninstall
 ```
