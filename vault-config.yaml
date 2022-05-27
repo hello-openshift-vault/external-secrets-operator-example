@@ -1,0 +1,59 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: KubernetesAuthEngineConfig
+metadata:
+  name: hub
+  namespace: vault-server
+spec:
+  authentication:
+    path: admin
+    role: admin
+    serviceAccount:
+      name: vault-server
+  path: hub
+  tokenReviewerServiceAccount:
+    name: vault-server
+---
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: AuthEngineMount
+metadata:
+  name: hub
+  namespace: vault-server
+spec:
+  authentication:
+    path: admin
+    role: admin
+    serviceAccount:
+      name: vault-server
+  path: hub
+  type: kubernetes
+---
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Policy
+metadata:
+  name: hub-ns-read
+  namespace: vault-server
+spec:
+  authentication:
+    path: admin
+    role: admin
+    serviceAccount:
+      name: vault-server
+  policy: |
+    path "hub/data/my-app/*" {
+       capabilities=["read","list"]
+    }
+---
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: SecretEngineMount
+metadata:
+  name: hub
+  namespace: vault-server
+spec:
+  authentication:
+    path: admin
+    role: admin
+    serviceAccount:
+      name: vault-server
+  type: kv
+  options:
+    version: "2"
