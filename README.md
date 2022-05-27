@@ -57,3 +57,4 @@ $ make uninstall
 [Hashicorp Vault]:
 [OpenShift GitOps]: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html
 [Red Hat Blog]: https://cloud.redhat.com/blog/how-to-use-hashicorp-vault-and-argo-cd-for-gitops-on-openshift
+[Vault Config Operator]: https://github.com/redhat-cop/vault-config-operator
