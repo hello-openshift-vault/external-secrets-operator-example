@@ -19,7 +19,10 @@ $ make push
 
 ## Deploy to OpenShift
 
-Deploy manifests under *./manifests* in order:
+**First, [deploy vault](https://github.com/RyanMillerC/vault-init/)!** You will
+need a fresh vault to run this.
+
+Then, deploy manifests under *./manifests* with make:
 
 ```bash
 $ make install
