@@ -52,7 +52,7 @@ To unisntall:
 $ make uninstall
 ```
 
-[Argo CD]:
+[Argo CD]: https://argoproj.github.io/cd
 [argocd-vault-plugin]: https://github.com/argoproj-labs/argocd-vault-plugin
 [Hashicorp Vault]:
 [OpenShift GitOps]: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html
