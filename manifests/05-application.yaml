@@ -8,7 +8,7 @@ spec:
     - name: in-cluster
       namespace: my-app
   sourceRepos:
-    - 'https://git.taco.moe/prototype/argo-vault-plugin.git'
+    - 'https://git.taco.moe/prototype/external-secrets.git'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -21,25 +21,10 @@ spec:
     name: in-cluster
     namespace: my-app
   source:
-    repoURL: 'https://git.taco.moe/prototype/argo-vault-plugin.git'
+    repoURL: 'https://git.taco.moe/prototype/external-secrets.git'
     path: 'test'
     directory:
       recurse: false
-    plugin:
-      name: argocd-vault-plugin
-      env:
-        - name: AVP_AUTH_TYPE
-          value: k8s
-        - name: AVP_K8S_ROLE
-          value: my-app
-        - name: AVP_KV_VERSION
-          value: '2'
-        - name: AVP_MOUNT_PATH
-          value: auth/hub
-        - name: AVP_TYPE
-          value: vault
-        - name: VAULT_ADDR
-          value: 'https://vault.apps.hub.taco.moe'
   syncPolicy:
     automated:
       prune: true
