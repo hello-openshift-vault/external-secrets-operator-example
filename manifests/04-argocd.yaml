@@ -9,8 +9,6 @@ spec:
   rbac:
     policy: g, system:cluster-admins, role:admin
     scopes: '[groups]'
-  repo:
-    serviceaccount: gitops-argocd-server
   server:
     route:
       enabled: true
