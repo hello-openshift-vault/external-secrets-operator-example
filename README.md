@@ -33,6 +33,31 @@ helm install \
   objects
 * 🍻
 
+## Deploy to OpenShift
+
+**First, [deploy vault](https://github.com/RyanMillerC/vault-init/)!** You will
+need a fresh vault to run this.
+
+After validating that vault is up (pods should be *Ready*), deploy manifests
+under *./manifests* with make:
+
+```bash
+$ make install
+```
+
+## Uninstall
+
+**Run this uninstall before running the vault uninstall, otherwise the
+vault-config-operator CRs will hang on delete.** If you do accidentally
+uninstall this first, you can patch/edit the hanging CRs to remove their
+*finalizers*.
+
+To unisntall:
+
+```bash
+$ make uninstall
+```
+
 [Argo CD]: https://github.com/argoproj/argo-cd
 [External Secrets Operator]: https://github.com/external-secrets/external-secrets
 [Hashicorp Vault]: https://github.com/hashicorp/vault
