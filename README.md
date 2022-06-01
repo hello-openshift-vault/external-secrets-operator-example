@@ -20,6 +20,19 @@ helm install \
     --set installCRDs=true
 ```
 
+## Overview
+
+* Install Vault
+* Configure Vault for Kubernetes authentication
+* Install Vault Config Operator
+* Install External Secrets Operator
+* Install OpenShift GitOps Operator
+* Deploy Argo instance using custom image to my-app namespace
+* Deploy test application to Argo instance
+* External Secrets Operator will convert *ExternalSecret* objects to *Secret*
+  objects
+* 🍻
+
 [Argo CD]: https://github.com/argoproj/argo-cd
 [External Secrets]: https://github.com/external-secrets/external-secrets
 [Hashicorp Vault]: https://github.com/hashicorp/vault
