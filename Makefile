@@ -16,7 +16,7 @@ install:
 	sleep 20
 	oc create -f ./manifests/02-vault-role.yaml
 	sleep 10
-	sh create-secret.sh
+	oc exec -n vault-server vault-server-0 -- vault kv put hub/my-app/message message="Hello World!"
 	oc create -f ./manifests/03-namespace.yaml
 	oc create -f ./manifests/04-argocd.yaml
 	sleep 30
