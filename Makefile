@@ -1,15 +1,7 @@
-.PHONY: help build-image push-image install uninstall
-
-IMAGE = "registry.taco.moe/argo:latest"
+.PHONY: help install uninstall
 
 help:
 	cat Makefile
-
-build-image:
-	podman build -t ${IMAGE} .
-
-push-image:
-	podman push ${IMAGE}
 
 install:
 	oc create -f ./manifests/01-vault-config.yaml
