@@ -33,7 +33,13 @@ Before deploying, make sure that all pods in the `external-secrets` and
 `vault-server` namespaces are "Ready".
 
 ```bash
-$ ./run.sh
+$ oc get pods -n external-secrets && oc get pods -n vault-server
+```
+
+Run this script to deploy:
+
+```bash
+$ ./deploy.sh
 ```
 
 ## Validate Synced Secret
