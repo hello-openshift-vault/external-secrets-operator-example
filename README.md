@@ -58,4 +58,4 @@ oc get secrets -n my-app message -o jsonpath="{.data.message}" | base64 -d
 [OpenShift Container Platform]: https://docs.openshift.com/container-platform/latest
 [OpenShift GitOps]: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html
 [Vault Config Operator]: https://github.com/redhat-cop/vault-config-operator
-[vault-init](https://github.com/hello-openshift-vault/vault-init)
+[vault-init]: https://github.com/hello-openshift-vault/vault-init
