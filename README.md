@@ -4,16 +4,21 @@ This repo contains example code that integrates [Hashicorp Vault] and
 [OpenShift Container Platform] to deploy secrets from Vault using
 [External Secrets Operator].
 
+This is meant for demoing and lab use. It requires an OpenShift cluster with
+persistent storage (for Vault).
+
 ## Step 1: Install Vault
 
-Use [vault-init] to install Vault.
+Use [vault-init] to install a pre-configured Vault server. **If you install
+Vault through different process you will probably need to make modifications to
+the deploy script.**
 
 ## Step 2: Install External Secrets Operator
 
 **IMPORTANT: I could only get External Secrets Operator working using the
-Helm chart installation method (with `installCRDs=true`).** I tried to install
-the operator directly from OperatorHub but the operator would not respond to CR
-creation (e.g. SecretStore would create but the status would never populate).
+Helm chart installation method.** I tried to install the operator directly from
+OperatorHub but the operator would not respond to CR creation (e.g. SecretStore
+would create but the status would never populate).
 
 To install the Operator with with Helm:
 
@@ -27,8 +32,8 @@ helm install \
     --set installCRDs=true
 ```
 
-**NOTE:** If the Vault TLS certificate is not signed by a public CA (signed by
-a third party CA **OR signed by the OpenShift Ingress Operator**) you
+**NOTE:** If the Vault TLS certificate is not signed by a public CA (e.g.
+signed by a third party CA **OR signed by the OpenShift Ingress Operator**) you
 will need to customize the external-secrets installation. See
 [external-secrets-custom-ca].
 
@@ -41,7 +46,7 @@ Before deploying, make sure that all pods in the `external-secrets` and
 $ oc get pods -n external-secrets && oc get pods -n vault-server
 ```
 
-Run this script to deploy:
+Once all the pods are "Ready", run this script to deploy:
 
 ```bash
 $ ./deploy.sh
