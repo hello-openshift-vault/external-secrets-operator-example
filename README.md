@@ -27,6 +27,11 @@ helm install \
     --set installCRDs=true
 ```
 
+**NOTE:** If the Vault TLS certificate is not signed by a public CA (signed by
+a third party CA **OR signed by the OpenShift Ingress Operator**) you
+will need to customize the external-secrets installation. See
+[external-secrets-custom-ca].
+
 ## Step 3: Deploy Example Manifests
 
 Before deploying, make sure that all pods in the `external-secrets` and
@@ -64,4 +69,5 @@ oc get secrets -n my-app message -o jsonpath="{.data.message}" | base64 -d
 [OpenShift Container Platform]: https://docs.openshift.com/container-platform/latest
 [OpenShift GitOps]: https://docs.openshift.com/container-platform/4.10/cicd/gitops/understanding-openshift-gitops.html
 [Vault Config Operator]: https://github.com/redhat-cop/vault-config-operator
+[external-secrets-custom-ca]: https://github.com/hello-openshift-vault/external-secrets-custom-ca
 [vault-init]: https://github.com/hello-openshift-vault/vault-init
