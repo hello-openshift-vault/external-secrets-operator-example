@@ -9,9 +9,10 @@ persistent storage (for Vault).
 
 ## Step 1: Install Vault
 
-Use [vault-init] to install a pre-configured Vault server. **If you install
-Vault through different process you will probably need to make modifications to
-the deploy script.**
+Use [vault-init] to install a pre-configured Vault server.
+
+**NOTE:** If you install Vault through different process you will probably need
+to make modifications to the deploy script.
 
 ## Step 2: Install External Secrets Operator
 
