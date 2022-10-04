@@ -38,7 +38,7 @@ signed by a third party CA **OR signed by the OpenShift Ingress Operator**) you
 will need to customize the external-secrets installation. See
 [external-secrets-custom-ca].
 
-## Step 3: Deploy Example Manifests
+## Step 3: Deploy Example Resources
 
 Before deploying, make sure that all pods in the `external-secrets` and
 `vault-server` namespaces are "Ready".
@@ -47,7 +47,8 @@ Before deploying, make sure that all pods in the `external-secrets` and
 $ oc get pods -n external-secrets && oc get pods -n vault-server
 ```
 
-Once all the pods are "Ready", run this script to deploy:
+Once all command above shows all pods are "Ready", run this script to deploy
+example resources:
 
 ```bash
 $ ./deploy.sh

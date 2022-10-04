@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# This script is idempotent. Should be able to re-run it if something fails
+# without manually cleaning up anything.
+#
 
 RECOVERY_JSON=$(oc get secret vault-recovery-keys -n vault-server -o jsonpath="{.data.recovery-keys\.json}" | base64 -d)
 VAULT_ROOT_TOKEN=$(echo "$RECOVERY_JSON" | jq -r '.["root_token"]')
